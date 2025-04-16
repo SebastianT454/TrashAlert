@@ -1,0 +1,19 @@
+Simple
+por cada entidad de su base de datos, vaya a la carpeta model y cambie los nombres
+lo mismo para los archivos en la carpeta service, repository y controller
+pero tenda en cuenta no cambiar lo que acompania el nombre
+
+ejemplo:
+
+si mi entidad se llama Casa
+al cambiar ReporteService, debe cambiarse Reporte por Casa y dejar el service
+de modo que tendriamos CasaService
+esto es asi para mantener el codigo limpio y la estructura en la que el backend lee los archivos
+realice estos mismos cambios en el init
+
+De lo contrario, puede toparse con ERRORES al momento de compilar
+
+procure no modificar el setup.bash ni el setup.sh a menos que tenga conocimiento sobre el manejo de archivos
+por consola de comandos en su sistema operativo.
+
+una vez su proyecto este listo, no olvide correr en la terminal pip freeze > requirements.txt antes de hacer push.

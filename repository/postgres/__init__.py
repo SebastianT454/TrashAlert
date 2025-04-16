@@ -1,0 +1,6 @@
+from .EstadosReporteRepository import EstadosReporteRepository
+from .PrioridadesReporteRepository import PrioridadesReporteRepository
+from .ReporteRepository import ReporteRepository
+from .RolesUsuarioRepository import RolesUsuarioRepository
+from .UsuarioRepository import UsuarioRepository
+print("Cargando querys del repositorio")

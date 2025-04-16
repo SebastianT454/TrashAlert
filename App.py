@@ -10,4 +10,5 @@ app.register_blueprint(prioridadesReporte, url_prefix='/prioridadesReporte')
 app.register_blueprint(estadosReporte, url_prefix='/estadosReporte')
 
 if __name__ == "__main__":
+    print(" INICIANDO TRASH PROJECT BACKEND")
     app.run(debug=True)
