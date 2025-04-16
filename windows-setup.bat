@@ -30,6 +30,7 @@ call entornoVirtualTrashProject\Scripts\activate
 pip install -r requirements.txt
 
 :: Mensaje de éxito
+echo --------------------------------------------------------------------------------------
 echo ✅ Entorno virtual creado e instalado con éxito.
 echo Backend de Python con SQLAlchemy para PostgreSQL por Lenin Ospina Lamprea, MIT License.
 

@@ -27,6 +27,7 @@ else
 fi
 source entornoVirtualTrashProject/bin/activate
 pip install -r requirements.txt
+echo "---------------------------------------------------------------------------------------"
 echo "✅ Entorno virtual iniciado con éxito."
 echo "Backend de Python con SQLAlchemy para PostgreSQL por Lenin Ospina Lamprea, MIT License."
 echo "▶ Ejecutando: python3 App.py"
