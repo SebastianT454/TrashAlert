@@ -1,16 +1,16 @@
 @echo off
-:: Verificar si Python esta instalado
+:: Verificar si Python está instalado
 python --version >nul 2>nul
 if %errorlevel% neq 0 (
-    echo Python no esta instalado. Redirigiendo a la pagina de instalacion...
+    echo Python no está instalado. Redirigiendo a la pagina de instalación...
     start https://www.python.org/downloads/
     exit /b
 )
 
-:: Verificar si pip esta instalado
+:: Verificar si pip está instalado
 python -m pip --version >nul 2>nul
 if %errorlevel% neq 0 (
-    echo pip no esta instalado. Instalando pip...
+    echo pip no está instalado. Instalando pip...
     python -m ensurepip --upgrade
 )
 
@@ -20,7 +20,7 @@ if exist "entornoVirtualTrashProject" (
 ) else (
     :: Crear entorno virtual si no existe
     python -m venv entornoVirtualTrashProject
-    echo Entorno virtual creado con exito.
+    echo Entorno virtual creado con éxito.
 )
 
 :: Activar el entorno virtual
@@ -29,10 +29,10 @@ call entornoVirtualTrashProject\Scripts\activate
 :: Instalar dependencias desde requirements.txt
 pip install -r requirements.txt
 
-:: Mensaje de exito
-echo ✅ Entorno virtual creado e instalado con exito.
+:: Mensaje de éxito
+echo ✅ Entorno virtual creado e instalado con éxito.
 echo Backend de Python con SQLAlchemy para PostgreSQL por Lenin Ospina Lamprea, MIT License.
 
-:: Ejecutar la aplicacion
+:: Ejecutar la aplicación
 echo ▶ Ejecutando: python App.py
 python App.py
