@@ -3,7 +3,7 @@ import Ejecutar
 try:
     from flask import Flask, request, jsonify, render_template
 
-    from controller import usuario, rolesUsuario, reporte, prioridadesReporte, estadosReporte
+    from controller import usuario, rolesUsuario, reporte, prioridadesReporte, estadosReporte, imagen
 
     app = Flask(__name__)
     app.register_blueprint(usuario, url_prefix='/usuario')
@@ -11,10 +11,12 @@ try:
     app.register_blueprint(reporte, url_prefix='/reporte')
     app.register_blueprint(prioridadesReporte, url_prefix='/prioridadesReporte')
     app.register_blueprint(estadosReporte, url_prefix='/estadosReporte')
+    app.register_blueprint(imagen, url_prefix='/imagen')
 
     if __name__ == "__main__":
         print(" INICIANDO TRASH PROJECT BACKEND")
         app.run(debug=True)
 except Exception as e:
+    print("EXCEPCION:", e)
     print("EJECUtTANDO EL ARCHIVO Ejecutar.py \n EXECUTING THE FILE Ejecutar.PY")
     Ejecutar.inicioEjecucion()
