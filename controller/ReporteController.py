@@ -25,7 +25,10 @@ def getid(id):
 
 @reporte.route('/save', methods=['POST'])
 def save():
-    return reporteService.save(request.get_json())
+    data = request.form.to_dict()
+    data['imagen'] = request.files['imagen'].read()
+    data['mime_type'] = request.files['imagen'].mimetype
+    return reporteService.save(data)
 
 @reporte.route('/update', methods=['PUT'])
 def update():

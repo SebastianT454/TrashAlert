@@ -2,6 +2,15 @@ import json
 from google import genai
 from SecretConfig import GEMINI_API_KEY, GEMINI_PROMPT, ALLOWED_MIME_TYPES
 
+"""
+INSTRUCCIONES:
+Cambiar todo lo que diga Imagen, por el nombre de la nueva clase con la primera en mayuscula. Verificar mayusculas
+Cambiar todo lo que diga imagen, por el nombre de la nueva clase con todo en minuscula. Verificar minusculas
+"""
+
+# clase de modelo: N/A
+# nombre variable: N/A
+
 class ImagenService:
 
     def __init__(self):
@@ -34,10 +43,13 @@ class ImagenService:
         try:
             self.validateImg(image_bytes, mime_type)
 
-            response = self.classifyImg(image_bytes, mime_type)
-            return json.dumps(response)
+            llm_response = self.classifyImg(image_bytes, mime_type)
+            llm_response['response'] = int(llm_response.get('response').strip())
+            if llm_response.get('response') == 0: raise ValueError(f"En la imagen analizada no se visualiza algun desecho o residuo identificable.")
+
+            return json.dumps(llm_response)
         
         except Exception as e:
 
             print(f"Un error ha ocurrido: {e}")
-            return json.dumps({'invalid_image_request': str(e)})
+            return json.dumps({'invalid_image': str(e)})
