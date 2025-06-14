@@ -1,0 +1,38 @@
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Usuario - Reportar Residuo</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/colors.css">
+  <link rel="stylesheet" href="css/garden.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/style.css"></head>
+<body>
+  <div class="container mt-5">
+    <h2>Reportar residuos</h2>
+    <form id="form-reporte">
+      <div class="form-group">
+        <label for="foto">Foto:</label>
+        <input type="file" class="form-control" id="foto" accept="image/*" required>
+      </div>
+      <div class="form-group">
+        <label for="descripcion">Descripción:</label>
+        <textarea class="form-control" id="descripcion" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-success">Enviar</button>
+    </form>
+
+    <hr>
+    <h4>Mis reportes</h4>
+    <ul id="mis-reportes" class="list-group"></ul>
+  </div>
+  <script>
+    document.getElementById('form-reporte').addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert('Reporte enviado correctamente.');
+    });
+  </script>
+</body>
+</html>

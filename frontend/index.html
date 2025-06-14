@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Site Metas -->
+    <title>TrashAlert - Report Waste in Your Community</title>
+    <meta name="keywords" content="waste management, report trash, environmental protection">
+    <meta name="description" content="Report and track waste issues in your community. Help keep your neighborhood clean and safe.">
+    <meta name="author" content="">
+    
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    
+    <!-- Design fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet"> 
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- FontAwesome Icons core CSS -->
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Responsive styles for this template -->
+    <link href="css/responsive.css" rel="stylesheet">
+
+    <!-- Colors for this template -->
+    <link href="css/colors.css" rel="stylesheet">
+
+    <!-- Version Garden CSS for this template -->
+    <link href="css/version/garden.css" rel="stylesheet">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+
+    <!-- Homepage specific styles -->
+    <style>
+        .hero-section {
+            background: url('images/waste-hero.jpg') no-repeat center center;
+            background-size: cover;
+            padding: 120px 0;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        .hero-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .hero-buttons {
+            margin-top: 30px;
+        }
+        .btn-login {
+            background-color: #4CAF50;
+            color: white;
+            margin-right: 15px;
+        }
+        .btn-register {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        .feature-box {
+            text-align: center;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .feature-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .feature-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+        .how-it-works {
+            background-color: #f9f9f9;
+            padding: 60px 0;
+        }
+        .step {
+            text-align: center;
+            padding: 20px;
+        }
+        .step-number {
+            background-color: #4CAF50;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        #map {
+            height: 400px;
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+    <div id="wrapper">
+        <div class="topbar-section">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6 hidden-xs-down">
+                        <div class="topsocial">
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Youtube"><i class="fa fa-youtube"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa-instagram"></i></a>
+                        </div><!-- end social -->
+                    </div><!-- end col -->
+
+                    <div class="col-lg-4 hidden-md-down">
+                    </div><!-- end col -->
+
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <div class="user-actions">
+                            <a href="login.html" class="btn btn-sm btn-outline-light">Login</a>
+                            <a href="register.html" class="btn btn-sm btn-success">Register</a>
+                        </div>
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end header-logo -->
+        </div><!-- end topbar -->
+
+        <div class="header-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="logo">
+                            <a href="index.html"><h1>TrashAlert</h1></a>
+                        </div><!-- end logo -->
+                    </div>
+                </div><!-- end row -->
+            </div><!-- end header-logo -->
+        </div><!-- end header -->
+
+        <header class="header">
+            <div class="container">
+                <nav class="navbar navbar-inverse navbar-toggleable-md">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#TrashAlertmenu" aria-controls="TrashAlertmenu" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-md-center" id="TrashAlertmenu">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link color-green-hover active" href="index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link color-green-hover" href="about.html">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link color-green-hover" href="reports.html">Public Reports</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link color-green-hover" href="contact.html">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div><!-- end container -->
+        </header><!-- end header -->
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container hero-content">
+                <h1>Help Keep Your Community Clean</h1>
+                <p class="lead">Report waste issues in your neighborhood and track their resolution. Together we can make our cities cleaner and healthier.</p>
+                <div class="hero-buttons">
+                    <a href="login.html" class="btn btn-lg btn-login">Login</a>
+                    <a href="register.html" class="btn btn-lg btn-register">Register Now</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section">
+            <div class="container">
+                <div class="section-title text-center">
+                    <h3>Why Use TrashAlert?</h3>
+                    <p>Our platform makes it easy to report and track waste management issues</p>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-box">
+                            <div class="feature-icon">
+                                <i class="fa fa-map-marker"></i>
+                            </div>
+                            <h4>Report Issues</h4>
+                            <p>Easily report waste problems in your area with photos and location details.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-box">
+                            <div class="feature-icon">
+                                <i class="fa fa-bell"></i>
+                            </div>
+                            <h4>Get Notified</h4>
+                            <p>Receive updates when your reports are being processed and when they're resolved.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-box">
+                            <div class="feature-icon">
+                                <i class="fa fa-users"></i>
+                            </div>
+                            <h4>Community Power</h4>
+                            <p>See what others are reporting in your area and support clean-up efforts.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="how-it-works">
+            <div class="container">
+                <div class="section-title text-center">
+                    <h3>How It Works</h3>
+                    <p>Three simple steps to make your community cleaner</p>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <h4>Sign Up</h4>
+                            <p>Create your free account to start reporting waste issues in your neighborhood.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4">
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <h4>Report Waste</h4>
+                            <p>Take a photo and provide details about the waste problem you've found.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4">
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <h4>Track Progress</h4>
+                            <p>Monitor the status of your report and see when the issue gets resolved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Reports Section -->
+        <section class="section">
+            <div class="container">
+                <div class="section-title text-center">
+                    <h3>Recent Reports in Your Area</h3>
+                    <p>See what issues have been reported near you</p>
+                </div>
+                
+                <div id="map"></div>
+                
+                <div class="text-center">
+                    <a href="register.html" class="btn btn-success btn-lg">Sign Up to Report an Issue</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="section" style="background-color: #4CAF50; color: white; padding: 60px 0;">
+            <div class="container text-center">
+                <h2>Ready to Make a Difference?</h2>
+                <p class="lead">Join thousands of citizens who are helping to keep their communities clean.</p>
+                <div style="margin-top: 30px;">
+                    <a href="register.html" class="btn btn-light btn-lg" style="margin-right: 15px;">Register Now</a>
+                    <a href="login.html" class="btn btn-outline-light btn-lg">Login</a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <div class="widget">
+                            <div class="footer-text text-center">
+                                <a href="index.html"><img src="images/version/garden-footer-logo.png" alt="" class="img-fluid"></a>
+                                <p>TrashAlert - Waste report management system</p>
+                                <div class="social">
+                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>              
+                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
+                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa-instagram"></i></a>
+                                </div>
+                            </div><!-- end footer-text -->
+                        </div><!-- end widget -->
+                    </div><!-- end col -->
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <br>
+                        <div class="copyright">&copy; 2025 TrashAlert - Adapted for Waste Management</div>
+                    </div>
+                </div>
+            </div><!-- end container -->
+        </footer><!-- end footer -->
+
+        <div class="dmtop">Scroll to Top</div>
+        
+    </div><!-- end wrapper -->
+
+    <!-- Core JavaScript
+    ================================================== -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/tether.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+    
+    <!-- Map Script -->
+    <script>
+        // Initialize the map when the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create the map centered on Colombia
+            const map = L.map('map').setView([4.5709, -74.2973], 6);
+            
+            // Add OpenStreetMap base layer
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            
+            // Sample report locations (would be replaced with real data in production)
+            const sampleReports = [
+                { 
+                    name: "Accumulated trash in park", 
+                    lat: 4.7110, 
+                    lng: -74.0721,
+                    status: "Pending"
+                },
+                { 
+                    name: "Waste in recreational area", 
+                    lat: 6.2476, 
+                    lng: -75.5658,
+                    status: "Resolved"
+                },
+                { 
+                    name: "Overflowing container", 
+                    lat: 10.3932, 
+                    lng: -75.4832,
+                    status: "In Process"
+                }
+            ];
+            
+            // Add markers for each report
+            sampleReports.forEach(report => {
+                const marker = L.marker([report.lat, report.lng]).addTo(map);
+                marker.bindPopup(`<b>${report.name}</b><br>Status: ${report.status}`);
+            });
+        });
+    </script>
+</body>
+</html>

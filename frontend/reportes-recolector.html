@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Site Metas -->
+    <title>TrashAlert - View Reports</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    
+    <!-- Design fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet"> 
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- FontAwesome Icons core CSS -->
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Responsive styles for this template -->
+    <link href="css/responsive.css" rel="stylesheet">
+
+    <!-- Colors for this template -->
+    <link href="css/colors.css" rel="stylesheet">
+
+    <!-- Version Garden CSS for this template -->
+    <link href="css/version/garden.css" rel="stylesheet">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+
+    <!-- Additional map styles -->
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .map-container {
+            margin-top: 30px;
+        }
+        .map-header {
+            margin-bottom: 20px;
+        }
+    </style>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+    <div id="wrapper">
+        <div class="topbar-section">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6 hidden-xs-down">
+                        <div class="topsocial">
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Youtube"><i class="fa fa-youtube"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa-instagram"></i></a>
+                        </div><!-- end social -->
+                    </div><!-- end col -->
+
+                    <div class="col-lg-4 hidden-md-down">
+                    </div><!-- end col -->
+
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <div class="user-info">
+                            <span>Welcome, Administrator</span>
+                        </div>
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end header-logo -->
+        </div><!-- end topbar -->
+
+        <div class="header-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="logo">
+                            <a href="admin-home.html"><h1>TrashAlert</h1></a>
+                        </div><!-- end logo -->
+                    </div>
+                </div><!-- end row -->
+            </div><!-- end header-logo -->
+        </div><!-- end header -->
+
+        <header class="header">
+            <div class="container">
+                <nav class="navbar navbar-inverse navbar-toggleable-md">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#TrashAlertmenu" aria-controls="TrashAlertmenu" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-md-center" id="TrashAlertmenu">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link color-green-hover" href="recolector-home.html">Recolector Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link color-green-hover active" href="reportes-recolector.html">View Reports</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div><!-- end container -->
+        </header><!-- end header -->
+
+        <section class="section wb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="text-center">All Reports</h2>
+                        
+                        <!-- Map Section -->
+                        <div class="map-container">
+                            <h4 class="map-header text-center"><i class="fa fa-map-marker"></i> Report Locations</h4>
+                            <div id="map"></div>
+                        </div>
+                        
+                        <!-- Reports Table -->
+                        <div class="table-responsive" style="margin-top: 30px;">
+                            <table class="table table-bordered table-hover">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>Photo</th>
+                                        <th>Description</th>
+                                        <th>Priority</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                        <th>Location</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><img src="images/report1.jpg" alt="Waste" class="img-thumbnail" width="100"></td>
+                                        <td>Accumulated trash in park</td>
+                                        <td><span class="badge badge-danger">High</span></td>
+                                        <td><span class="badge badge-warning">Pending</span></td>
+                                        <td>04/21/2025</td>
+                                        <td>Bogotá</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="images/report2.jpg" alt="Waste" class="img-thumbnail" width="100"></td>
+                                        <td>Waste in recreational area</td>
+                                        <td><span class="badge badge-warning">Medium</span></td>
+                                        <td><span class="badge badge-success">Resolved</span></td>
+                                        <td>04/20/2025</td>
+                                        <td>Medellín</td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="images/report3.jpg" alt="Waste" class="img-thumbnail" width="100"></td>
+                                        <td>Overflowing container</td>
+                                        <td><span class="badge badge-info">Low</span></td>
+                                        <td><span class="badge badge-primary">In Process</span></td>
+                                        <td>04/19/2025</td>
+                                        <td>Cartagena</td>
+                                    </tr>
+                                    <!-- More reports can be added here -->
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <nav aria-label="Page navigation" class="mt-4">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <div class="widget">
+                            <div class="footer-text text-center">
+                                <a href="index.html"><img src="images/version/garden-footer-logo.png" alt="" class="img-fluid"></a>
+                                <p>TrashAlert - Waste report management system</p>
+                                <div class="social">
+                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>              
+                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
+                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa-instagram"></i></a>
+                                </div>
+                            </div><!-- end footer-text -->
+                        </div><!-- end widget -->
+                    </div><!-- end col -->
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <br>
+                        <div class="copyright">&copy; 2025 TrashAlert - Adapted for Waste Management</div>
+                    </div>
+                </div>
+            </div><!-- end container -->
+        </footer><!-- end footer -->
+
+        <div class="dmtop">Scroll to Top</div>
+        
+    </div><!-- end wrapper -->
+
+    <!-- Core JavaScript
+    ================================================== -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/tether.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+    
+    <!-- Map Script -->
+    <script>
+        // Define report locations (matching the table)
+        const reportLocations = [
+            { 
+                name: "Accumulated trash in park", 
+                lat: 4.7110, 
+                lng: -74.0721, 
+                status: "Pending", 
+                priority: "High",
+                date: "04/21/2025",
+                photo: "images/report1.jpg"
+            },
+            { 
+                name: "Waste in recreational area", 
+                lat: 6.2476, 
+                lng: -75.5658, 
+                status: "Resolved", 
+                priority: "Medium",
+                date: "04/20/2025",
+                photo: "images/report2.jpg"
+            },
+            { 
+                name: "Overflowing container", 
+                lat: 10.3932, 
+                lng: -75.4832, 
+                status: "In Process", 
+                priority: "Low",
+                date: "04/19/2025",
+                photo: "images/report3.jpg"
+            }
+        ];
+
+        // Initialize the map when the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create the map centered on Colombia
+            const map = L.map('map').setView([4.5709, -74.2973], 6);
+            
+            // Add OpenStreetMap base layer
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            
+            // Define icons by priority
+            const priorityIcons = {
+                "High": L.icon({
+                    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+                    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                    iconSize: [25, 41],
+                    iconAnchor: [12, 41],
+                    popupAnchor: [1, -34],
+                    shadowSize: [41, 41]
+                }),
+                "Medium": L.icon({
+                    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-orange.png',
+                    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                    iconSize: [25, 41],
+                    iconAnchor: [12, 41],
+                    popupAnchor: [1, -34],
+                    shadowSize: [41, 41]
+                }),
+                "Low": L.icon({
+                    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png',
+                    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                    iconSize: [25, 41],
+                    iconAnchor: [12, 41],
+                    popupAnchor: [1, -34],
+                    shadowSize: [41, 41]
+                })
+            };
+            
+            // Add markers for each report
+            reportLocations.forEach(report => {
+                const marker = L.marker([report.lat, report.lng], {
+                    icon: priorityIcons[report.priority]
+                }).addTo(map);
+                
+                // Create popup content
+                const popupContent = `
+                    <div style="max-width: 200px;">
+                        <h5 style="margin-bottom: 5px;">${report.name}</h5>
+                        <img src="${report.photo}" alt="${report.name}" style="width: 100%; margin-bottom: 5px;">
+                        <p><strong>Status:</strong> <span class="badge ${getStatusBadgeClass(report.status)}">${report.status}</span></p>
+                        <p><strong>Priority:</strong> <span class="badge ${getPriorityBadgeClass(report.priority)}">${report.priority}</span></p>
+                        <p><strong>Date:</strong> ${report.date}</p>
+                    </div>
+                `;
+                
+                marker.bindPopup(popupContent);
+            });
+            
+            // Function to get CSS class by status
+            function getStatusBadgeClass(status) {
+                const statusClasses = {
+                    "Pending": "badge-warning",
+                    "Resolved": "badge-success",
+                    "In Process": "badge-primary"
+                };
+                return statusClasses[status] || "badge-secondary";
+            }
+            
+            // Function to get CSS class by priority
+            function getPriorityBadgeClass(priority) {
+                const priorityClasses = {
+                    "High": "badge-danger",
+                    "Medium": "badge-warning",
+                    "Low": "badge-info"
+                };
+                return priorityClasses[priority] || "badge-secondary";
+            }
+        });
+    </script>
+</body>
+</html>
