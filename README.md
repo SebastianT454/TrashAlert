@@ -1,9 +1,9 @@
 # Trash Alert App
 Authors **(Universidad De Medellin)** with their respective GitHub profile: 
-- Lenin Ospina (https://github.com/SkynetProyect)
-- Luis Miguel Giraldo (https://github.com/hurluis)
-- Jhon Edison Guerra (https://github.com/JhonEdisonG)
-- Sebastian Tamayo Avendaño (https://github.com/SebastianT454)
+- Lenin Ospina (https://github.com/SkynetProyect) Backend Development
+- Luis Miguel Giraldo (https://github.com/hurluis) Frontend Development
+- Jhon Edison Guerra (https://github.com/JhonEdisonG) Frontend Development
+- Sebastian Tamayo Avendaño (https://github.com/SebastianT454) Backend Development
 
 ## Overview
 This project implements a web application inspired by an APK originally developed and deployed in India. Its goal is to provide a fast, 
